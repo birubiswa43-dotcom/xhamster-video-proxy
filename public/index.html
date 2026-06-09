@@ -21,17 +21,15 @@
 <body>
     <header>
         <h1>🔥 Video Hub</h1>
-        <p>Free Videos - Pehli click Ad, Dusri click Video</p>
+        <p>Pehli Click = Adsterra | Dusri Click = Video</p>
     </header>
 
     <div class="container">
-        <div class="video-grid" id="videoGrid">
-            <!-- Videos yahan aayenge -->
-        </div>
+        <div class="video-grid" id="videoGrid"></div>
     </div>
 
     <script>
-        const API_BASE = "https://xhamster-video-proxy.onrender.com";   // ← Agar tera URL alag hai toh change kar dena
+        const API_BASE = "https://xhamster-video-proxy.onrender.com";
 
         async function loadVideos() {
             try {
@@ -59,8 +57,7 @@
                     grid.appendChild(card);
                 });
             } catch (e) {
-                console.error(e);
-                document.getElementById('videoGrid').innerHTML = "<p style='color:red'>Error loading videos. Refresh karo.</p>";
+                document.getElementById('videoGrid').innerHTML = `<p style="color:red;text-align:center;">Error loading videos.<br>Refresh karo.</p>`;
             }
         }
 
