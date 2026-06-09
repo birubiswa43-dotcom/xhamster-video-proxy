@@ -5,23 +5,77 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Video Hub</title>
     <style>
-        body { font-family: Arial, sans-serif; background: #0f0f0f; color: #fff; margin: 0; padding: 0; }
-        header { background: #1a1a1a; padding: 20px; text-align: center; }
-        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
-        .video-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
-        .video-card { background: #1f1f1f; border-radius: 10px; overflow: hidden; cursor: pointer; transition: 0.3s; }
-        .video-card:hover { transform: scale(1.05); box-shadow: 0 0 15px rgba(255,0,0,0.5); }
-        .video-card img { width: 100%; height: 170px; object-fit: cover; }
-        .video-info { padding: 12px; }
-        .video-info h3 { margin: 0 0 8px 0; font-size: 15px; line-height: 1.3; }
-        .duration { position: absolute; bottom: 8px; right: 8px; background: rgba(0,0,0,0.8); padding: 2px 6px; border-radius: 3px; font-size: 12px; }
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+        
+        body { 
+            font-family: 'Poppins', sans-serif; 
+            background: #0a0a0a; 
+            color: #fff; 
+            margin: 0; 
+            padding: 0; 
+        }
+        header { 
+            background: linear-gradient(135deg, #1a1a1a, #000); 
+            padding: 25px 0; 
+            text-align: center; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.8);
+        }
+        header h1 { 
+            margin: 0; 
+            font-size: 2.5rem; 
+            background: linear-gradient(90deg, #ff00cc, #ff9900);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .container { max-width: 1300px; margin: 0 auto; padding: 20px; }
+        .video-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); 
+            gap: 24px; 
+        }
+        .video-card { 
+            background: #161616; 
+            border-radius: 16px; 
+            overflow: hidden; 
+            cursor: pointer; 
+            transition: all 0.4s ease; 
+            box-shadow: 0 5px 15px rgba(0,0,0,0.6);
+        }
+        .video-card:hover { 
+            transform: translateY(-12px); 
+            box-shadow: 0 20px 30px rgba(255, 50, 50, 0.3);
+        }
+        .video-card img { 
+            width: 100%; 
+            height: 200px; 
+            object-fit: cover; 
+        }
+        .video-info { 
+            padding: 16px; 
+        }
+        .video-info h3 { 
+            margin: 0 0 10px 0; 
+            font-size: 15.5px; 
+            line-height: 1.4; 
+            font-weight: 500;
+        }
+        .duration { 
+            position: absolute; 
+            bottom: 12px; 
+            right: 12px; 
+            background: rgba(0,0,0,0.85); 
+            color: #fff; 
+            padding: 4px 8px; 
+            border-radius: 4px; 
+            font-size: 13px; 
+            font-weight: 600;
+        }
         .card-wrapper { position: relative; }
     </style>
 </head>
 <body>
     <header>
         <h1>🔥 Video Hub</h1>
-        <p>Pehli Click = Adsterra | Dusri Click = Video</p>
     </header>
 
     <div class="container">
@@ -44,7 +98,7 @@
                     card.className = 'video-card';
                     card.innerHTML = `
                         <div class="card-wrapper">
-                            <img src="${video.thumbnail}" alt="${video.title}">
+                            <img src="${video.thumbnail}" alt="${video.title}" onerror="this.src='https://via.placeholder.com/320x200?text=Video'">
                             <span class="duration">${video.duration}</span>
                         </div>
                         <div class="video-info">
@@ -57,7 +111,7 @@
                     grid.appendChild(card);
                 });
             } catch (e) {
-                document.getElementById('videoGrid').innerHTML = `<p style="color:red;text-align:center;">Error loading videos.<br>Refresh karo.</p>`;
+                document.getElementById('videoGrid').innerHTML = `<p style="color:#ff6666;text-align:center;padding:50px;">Videos load nahi ho rahe.<br>Refresh karo ya baad mein try karo.</p>`;
             }
         }
 
